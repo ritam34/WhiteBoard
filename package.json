@@ -1,0 +1,27 @@
+{
+  "name": "whiteboard",
+  "version": "1.0.0",
+  "description": "Real-time collaborative whiteboard application",
+  "main": "server/server.js",
+  "scripts": {
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "install-all": "npm install && npm run install-client && npm run install-server",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start"
+  },
+  "keywords": [
+    "whiteboard",
+    "collaborative",
+    "real-time",
+    "socket.io"
+  ],
+  "author": "Ritam Kha",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
