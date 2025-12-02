@@ -1,13 +1,9 @@
-import Board from '../models/boardModel.js';
-import User from '../models/userModel.js';
+import User from '../models/User.js';
+import Board from '../models/Board.js';
 import socketService from '../services/socketService.js';
+import mongoose from 'mongoose';
 
-/**
- * @desc    Get application statistics
- * @route   GET /api/admin/stats
- * @access  Public (in production, make this protected)
- */
-const getStats = async (req, res, next) => {
+export const getStats = async (req, res, next) => {
   try {
     const totalUsers = await User.countDocuments();
     const totalBoards = await Board.countDocuments();
@@ -78,14 +74,8 @@ const getStats = async (req, res, next) => {
   }
 };
 
-/**
- * @desc    Get health check
- * @route   GET /api/admin/health
- * @access  Public
- */
-const healthCheck = async (req, res, next) => {
+export const healthCheck = async (req, res, next) => {
   try {
-    const mongoose = require('mongoose');
     const dbState = mongoose.connection.readyState;
     
     const dbStatus = {
@@ -125,5 +115,3 @@ const healthCheck = async (req, res, next) => {
     });
   }
 };
-
-export { getStats, healthCheck };

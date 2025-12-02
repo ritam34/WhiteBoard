@@ -15,7 +15,7 @@ const handleValidationErrors = (req, res, next) => {
   next();
 };
 
-const validateRegister = [
+export const validateRegister = [
   body('username')
     .trim()
     .isLength({ min: 3, max: 30 })
@@ -38,7 +38,7 @@ const validateRegister = [
   handleValidationErrors
 ];
 
-const validateLogin = [
+export const validateLogin = [
   body('email')
     .trim()
     .isEmail()
@@ -51,40 +51,3 @@ const validateLogin = [
   
   handleValidationErrors
 ];
-
-const validateBoardCreate = [
-  body('title')
-    .optional()
-    .trim()
-    .isLength({ max: 100 })
-    .withMessage('Title cannot exceed 100 characters'),
-  
-  body('isPublic')
-    .optional()
-    .isBoolean()
-    .withMessage('isPublic must be a boolean'),
-  
-  handleValidationErrors
-];
-
-const validateBoardUpdate = [
-  body('title')
-    .optional()
-    .trim()
-    .isLength({ max: 100 })
-    .withMessage('Title cannot exceed 100 characters'),
-  
-  body('boardState')
-    .optional()
-    .isObject()
-    .withMessage('boardState must be an object'),
-  
-  body('isPublic')
-    .optional()
-    .isBoolean()
-    .withMessage('isPublic must be a boolean'),
-  
-  handleValidationErrors
-];
-
-export { validateRegister, validateLogin, validateBoardCreate, validateBoardUpdate };

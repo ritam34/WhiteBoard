@@ -203,4 +203,4 @@ class BoardService {
   }
 }
 
-module.exports = new BoardService();
+export default new BoardService();

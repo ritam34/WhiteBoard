@@ -1,8 +1,8 @@
 import rateLimit from 'express-rate-limit';
 
-const apiLimiter = rateLimit({
+export const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100, 
+  max: 100,
   message: {
     status: 'error',
     message: 'Too many requests from this IP, please try again later.'
@@ -11,32 +11,30 @@ const apiLimiter = rateLimit({
   legacyHeaders: false
 });
 
-const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, 
-  max: 5, 
+export const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
   message: {
     status: 'error',
     message: 'Too many authentication attempts, please try again later.'
   },
-  skipSuccessfulRequests: true 
+  skipSuccessfulRequests: true
 });
 
-const boardCreationLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000, 
-  max: 10, 
+export const boardCreationLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 10,
   message: {
     status: 'error',
     message: 'Too many boards created, please try again later.'
   }
 });
 
-const boardSaveLimiter = rateLimit({
+export const boardSaveLimiter = rateLimit({
   windowMs: 1 * 60 * 1000,
-  max: 30, 
+  max: 30,
   message: {
     status: 'error',
     message: 'Too many save requests, please slow down.'
   }
 });
-
-export { apiLimiter, authLimiter, boardCreationLimiter, boardSaveLimiter };

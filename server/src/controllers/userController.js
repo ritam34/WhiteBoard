@@ -1,12 +1,7 @@
 import User from '../models/User.js';
 import Board from '../models/Board.js';
 
-/**
- * @desc    Get user by ID
- * @route   GET /api/users/:userId
- * @access  Public
- */
-const getUserById = async (req, res, next) => {
+export const getUserById = async (req, res, next) => {
   try {
     const { userId } = req.params;
 
@@ -31,12 +26,7 @@ const getUserById = async (req, res, next) => {
   }
 };
 
-/**
- * @desc    Search users by username or email
- * @route   GET /api/users/search
- * @access  Private
- */
-const searchUsers = async (req, res, next) => {
+export const searchUsers = async (req, res, next) => {
   try {
     const { query } = req.query;
 
@@ -67,12 +57,7 @@ const searchUsers = async (req, res, next) => {
   }
 };
 
-/**
- * @desc    Get user's statistics
- * @route   GET /api/users/:userId/stats
- * @access  Private
- */
-const getUserStats = async (req, res, next) => {
+export const getUserStats = async (req, res, next) => {
   try {
     const { userId } = req.params;
 
@@ -93,7 +78,6 @@ const getUserStats = async (req, res, next) => {
     }
 
     const boardsCreated = await Board.countDocuments({ createdBy: userId });
-    
     const boardsCollaborated = await Board.countDocuments({
       collaborators: userId,
       createdBy: { $ne: userId }
@@ -122,12 +106,7 @@ const getUserStats = async (req, res, next) => {
   }
 };
 
-/**
- * @desc    Delete user account
- * @route   DELETE /api/users/:userId
- * @access  Private
- */
-const deleteUser = async (req, res, next) => {
+export const deleteUser = async (req, res, next) => {
   try {
     const { userId } = req.params;
 
@@ -164,11 +143,4 @@ const deleteUser = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-};
-
-export default {
-  getUserById,
-  searchUsers,
-  getUserStats,
-  deleteUser
 };
