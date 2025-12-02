@@ -89,67 +89,15 @@ const Home = () => {
             </p>
           )}
         </div>
-
-        <div className="grid md:grid-cols-3 gap-8 mt-24">
-          <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition border border-gray-100">
-            <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4">
-              <Users className="w-6 h-6 text-primary-600" />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              Real-time Collaboration
-            </h3>
-            <p className="text-gray-600">
-              See changes instantly as multiple users draw together. Live cursors show where everyone is working.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition border border-gray-100">
-            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-              <Zap className="w-6 h-6 text-purple-600" />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              Instant Setup
-            </h3>
-            <p className="text-gray-600">
-              Start drawing in seconds. No installation required, just share a link and collaborate.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition border border-gray-100">
-            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-              <Shield className="w-6 h-6 text-green-600" />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              Secure & Private
-            </h3>
-            <p className="text-gray-600">
-              Your boards are secure. Create private boards or share public ones for everyone to see.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-24 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-purple-600 rounded-3xl blur-3xl opacity-20"></div>
-          <div className="relative bg-white rounded-3xl shadow-2xl p-8 border border-gray-200">
-            <div className="aspect-video bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <Palette className="w-16 h-16 text-primary-600 mx-auto" />
-                <p className="text-gray-600 text-lg">
-                  Click "Create New Board" to start drawing
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
-      <footer className="bg-white border-t border-gray-200 mt-24">
+      {/* <footer className="bg-white border-t border-gray-200 mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center text-gray-600">
-            <p>© 2024 Collaborative Whiteboard. Built with</p>
+            <p>© 2024 Collaborative Whiteboard. Built with 🍟</p>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   )
 }

@@ -1,34 +1,45 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { useAuth } from './context/AuthContext'
 
-import HomePage from './pages/HomePage';
-import WhiteboardPage from './pages/WhiteboardPage';
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
+import Whiteboard from './pages/Whiteboard'
+import Dashboard from './pages/Dashboard'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
+
+import ProtectedRoute from './components/auth/ProtectedRoute'
+import Loading from './components/common/Loading'
 
 function App() {
-  return (
-    <Router>
-      <div className="App min-h-screen bg-gray-50">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/board/:boardId" element={<WhiteboardPage />} />
-        </Routes>
+  const { loading } = useAuth()
 
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </div>
-    </Router>
-  );
+  if (loading) {
+    return <Loading fullScreen />
+  }
+
+  return (
+    <Routes>
+
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      
+      <Route path="/board/:boardId" element={<Whiteboard />} />
+      
+      <Route path="/404" element={<NotFound />} />
+      <Route path="*" element={<Navigate to="/404" replace />} />
+    </Routes>
+  )
 }
 
-export default App;
+export default App
